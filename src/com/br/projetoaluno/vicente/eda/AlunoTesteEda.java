@@ -1,12 +1,12 @@
 package com.br.projetoaluno.vicente.eda;
-import  java.util.List;
-import  java.util.ArrayList;
 import java.util.Collections;
+import  java.util.List;
+import java.util.Scanner;
 
 public class AlunoTesteEda {
-
+	
 		public static void main(String[] args) {
-			List<Aluno> lista = new ArrayList<Aluno>();
+			ListaDados<Aluno>lista = new ListaDados<>();
 			int opcao;
 			do {
 				menuPrincipal();
@@ -23,6 +23,8 @@ public class AlunoTesteEda {
 			System.out.println("   (4) Mostrar aluno pelo nome");
 			System.out.println("   (5) Ordenar listagem pelo nome");
 			System.out.println("   (6) Mostrar listagem completa");
+			System.out.println("   (7) Inserir  na  Posição");
+			System.out.println("   (8) Excluir  na  Posição");
 			System.out.println("   (0) Encerrar \n");
 			System.out.print("              Informe sua opção: ");
 		}
@@ -47,6 +49,12 @@ public class AlunoTesteEda {
 			case 6:
 				mostraListagem(lista);
 				break;
+				
+			case 7:
+				iseriNaPosi(lista);
+				break;
+			case 8:
+				excluirNaPosi(lista);
 			case 0:
 				System.out.println("\n PROGAMA FINALIZADO !!!");
 				System.out.println("\n OBRIGADO POR UTILIZA-LO !!!");
@@ -66,6 +74,23 @@ public class AlunoTesteEda {
 			else
 				System.out.println("ALUNO NÃO INSERIDO!");
 		}
+		
+		private static  void iseriNaPosi(List<Aluno> lista) {
+			Scanner sc = new Scanner (System.in);
+			Aluno aluno  = new Aluno ();
+			
+			int Pos;
+			String nome;
+			System.out.println("Digite a Posição em  que deseja Inserir Novo Nome : " );
+			Pos =sc.nextInt();
+			sc.nextLine();
+			System.out.println("Digite O Nome Desejado : ");
+			nome = sc.nextLine();
+			aluno.setNome(nome);
+			lista.add(Pos, aluno);
+			System.out.println("Inserção de Nome Por Posição Feita  Com  Sucesso!!!!!");
+			
+		}
 
 		private static void excluiAluno(List<Aluno> lista) {
 			Aluno aluno = new Aluno();
@@ -74,6 +99,15 @@ public class AlunoTesteEda {
 				System.out.println("\n" + aluno.getNome() + " ALUNO  EXLUÍDO COM  SUCESSO!");
 			else
 				System.out.println("\n" + aluno.getNome() + " NOME  DE ALUNO  NÃO  EXISTENTE NA LISTA");
+		}
+		
+		private  static void  excluirNaPosi(List<Aluno> lista) {
+			Scanner sc =  new Scanner (System.in);
+			System.out.println("Digite a Posição Para Exclusão  do  Aluno");
+			lista.remove(sc.nextInt());
+			System.out.println("Exclusão  Por Posição Feita com  Sucesso!!!!");
+			
+			
 		}
 
 		private static void recuperaAluno(List<Aluno> lista) {
