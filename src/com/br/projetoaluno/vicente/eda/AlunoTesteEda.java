@@ -30,6 +30,7 @@ public class AlunoTesteEda {
 		System.out.println("   (6) Mostrar listagem completa");
 		System.out.println("   (7) Inserir  na  Posição");
 		System.out.println("   (8) Excluir  na  Posição");
+		System.out.println("   (9) Modifica Aluno na Posição");
 		System.out.println("   (0) Encerrar \n");
 		System.out.print("              Informe sua opção: ");
 	}
@@ -60,6 +61,8 @@ public class AlunoTesteEda {
 			break;
 		case 8:
 			excluirNaPosi(lista);
+		case 9:
+			modificaAlunoNaPosicao(lista);
 		case 0:
 			System.out.println("\n PROGAMA FINALIZADO !!!");
 			System.out.println("\n OBRIGADO POR UTILIZA-LO !!!");
@@ -135,12 +138,21 @@ public class AlunoTesteEda {
 		}
 	}
 	
-	private Aluno recuperaAlunoNaPosicao(List<Aluno> lista, int pos, Aluno aluno)  {
+	private static Aluno modificaAlunoNaPosicao(List<Aluno> lista)  {
+		Aluno aluno = new Aluno ();
+		Scanner sc = new  Scanner(System.in);
 		try {
+			int pos = 0;
+			System.out.println("Digite a Posição  do  Aluno ");
+			pos=sc.nextInt();
+			sc.nextLine();
+			obtemNomeAluno(aluno);
+			
 			if (lista.isEmpty()) {
 				throw new ListaVaziaException();
 			}
-			lista.get(pos);
+			
+			//lista.get(pos);
 			lista.set(pos, aluno);
 		} catch (ArrayIndexOutOfBoundsException e) {
 			e.getMessage();
@@ -149,6 +161,7 @@ public class AlunoTesteEda {
 		}
 		return aluno;
 	}
+	
 
 	private static void alteraNota(List<Aluno> lista) {
 		Aluno aluno = new Aluno();
@@ -172,6 +185,7 @@ public class AlunoTesteEda {
 		mostraListagem(lista);
 
 	}
+	
 
 	private static void mostraListagem(List<Aluno> lista) {
 		System.out.print("\n    - LISTAGEM COMPLETA - \n");
